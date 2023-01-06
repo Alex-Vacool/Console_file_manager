@@ -28,14 +28,29 @@
 
 4. выход
 выход из программы
-
 При выполнении задания можно пользоваться любыми средствами
 
-Для реализации основного меню можно использовать пример ниже или написать свой
+5. Добавить сохранение суммы счета в файл.
+При первом открытии программы на счету 0
+После того как мы воспользовались программой и вышли сохранить сумму счета
+При следующем открытии программы прочитать сумму счета, которую сохранили
+
+6. Добавить сохранение истории покупок в файл
+При первом открытии программы истории нет.
+После того как мы что нибудь купили и закрыли программу сохранить историю покупок.
+При следующем открытии программы прочитать историю и новые покупки уже добавлять к ней
 """
+import os.path
+
+history = []
+
 def bank_account():
-    b_sum = 0
-    history = []
+
+    if os.path.exists('account.txt') != True:
+        with open('account.txt', 'w') as f:
+            f.write(str('0'))
+    with open('account.txt', 'r') as f:
+        b_sum = int(f.read())
 
     def buy(b_sum):
         cost = int(input("Введите сумму покупки: "))
@@ -59,16 +74,14 @@ def bank_account():
             b_sum += cost
         elif choice == '2':
             b_sum = buy(b_sum)
-            # cost = int(input("Введите сумму покупки: "))
-            # if cost > b_sum:
-            #     print("Недостаточно средств")
-            # else:
-            #     b_sum -= cost
-            #     name = input("Введите наименование покупки: ")
-            #     history.append((name, cost))
         elif choice == '3':
             print(history)
         elif choice == '4':
+            with open('account.txt', 'w') as f:
+                f.write(str(b_sum))
+            with open('history.txt', 'a') as f1:
+                for order in history:
+                    f1.write(f'{order}\n')
             break
         else:
             print('Неверный пункт меню')
