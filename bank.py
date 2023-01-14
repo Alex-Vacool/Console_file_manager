@@ -70,8 +70,12 @@ def bank_account():
         print(f"Ваш текущий счет: {b_sum}")
         choice = input('Выберите пункт меню: ')
         if choice == '1':
-            cost = int(input("Введите сумму пополнения: "))
-            b_sum += cost
+            try:
+                cost = int(input("Введите сумму пополнения: "))
+            except ValueError:
+                print("Введенные данные не являются цмфрами!")
+            else:
+                b_sum += cost
         elif choice == '2':
             b_sum = buy(b_sum)
         elif choice == '3':
