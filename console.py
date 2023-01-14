@@ -18,6 +18,7 @@ import shutil
 import sys
 import victory
 import bank
+import Lotto
 from glob import glob
 
 
@@ -56,7 +57,8 @@ if __name__ == '__main__':
         print('8. создатель программы')
         print('9. викторина - "Известные люди"')
         print('10. мой банковский счет')
-        print('11. выход')
+        print('11. игра - ЛОТО')
+        print('12. выход')
 
         choice = input('Выберите пункт меню: ')
         if choice == '1':
@@ -105,6 +107,9 @@ if __name__ == '__main__':
             запуск программы для работы с банковским счетом'''
             bank.bank_account()
         elif choice == '11':
+            '''запуск игры - ЛОТО'''
+            Lotto.Lotto()
+        elif choice == '12':
             '''выход выход из программы'''
             break
         else:
