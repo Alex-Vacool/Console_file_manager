@@ -108,7 +108,7 @@ if __name__ == '__main__':
             bank.bank_account()
         elif choice == '11':
             '''запуск игры - ЛОТО'''
-            Lotto.Lotto()
+            Lotto.Game()
         elif choice == '12':
             '''выход выход из программы'''
             break
